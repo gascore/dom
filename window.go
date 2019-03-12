@@ -1,11 +1,10 @@
-//+build wasm,js
-
 package dom
 
 import (
 	"strings"
 
-	"github.com/dennwc/dom/js"
+	"github.com/gascore/dom/js"
+	sjs "github.com/gopherjs/gopherwasm/js"
 )
 
 func GetWindow() *Window {
@@ -42,6 +41,10 @@ func (w *Window) SetLocation(url string) {
 
 func (w *Window) OnResize(fnc func(e Event)) {
 	w.AddEventListener("resize", fnc)
+}
+
+func (w *Window) LocalStorage() sjs.Value {
+	return w.JSValue().Get("localStorage")
 }
 
 func joinKeyValuePairs(kvpair map[string]string, joiner string) string {

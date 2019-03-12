@@ -1,10 +1,8 @@
-//+build wasm,js
-
 package js
 
 import (
 	"fmt"
-	"syscall/js"
+	"github.com/gopherjs/gopherwasm/js"
 )
 
 var _ Wrapper = TypedArray{}
@@ -17,7 +15,7 @@ type TypedArray struct {
 // Release frees up resources allocated for the typed array.
 // The typed array and its buffer must not be accessed after calling Release.
 func (v TypedArray) Release() {
-	js.TypedArray{v.Ref}.Release()
+	v.Release()
 }
 
 // TypedArrayOf returns a JavaScript typed array backed by the slice's underlying array.

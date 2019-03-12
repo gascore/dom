@@ -1,4 +1,4 @@
-module github.com/dennwc/dom
+module github.com/gascore/dom
 
 go 1.12
 

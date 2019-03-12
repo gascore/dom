@@ -1,9 +1,7 @@
-// +build !js
-
 package ws
 
 import (
-	"github.com/dennwc/dom/js/jstest"
+	"github.com/gascore/dom/js/jstest"
 	"github.com/stretchr/testify/require"
 	"net/http"
 	"net/rpc"

@@ -1,11 +1,11 @@
-//+build wasm,js
+ 
 
 package dom
 
 import (
 	"image"
 
-	"github.com/dennwc/dom/js"
+	"github.com/gascore/dom/js"
 )
 
 var (
@@ -21,6 +21,22 @@ type Value = js.Wrapper
 
 func ConsoleLog(args ...interface{}) {
 	js.Get("console").Call("log", args...)
+}
+
+func ConsoleError(args ...interface{}) {
+	js.Get("console").Call("error", args...)
+}
+
+func ConsoleDir(args ...interface{}) {
+	js.Get("console").Call("dir", args...)
+}
+
+func ConsoleTime(args ...interface{}) {
+	js.Get("console").Call("time", args...)
+}
+
+func ConsoleTimeEnd(args ...interface{}) {
+	js.Get("console").Call("timeEnd", args...)
 }
 
 func Loop() {

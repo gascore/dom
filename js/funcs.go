@@ -1,5 +1,3 @@
-//+build wasm,js
-
 package js
 
 // NewFuncJS creates a function from a JS code string.

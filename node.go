@@ -1,8 +1,6 @@
-//+build wasm,js
-
 package dom
 
-import "github.com/dennwc/dom/js"
+import "github.com/gascore/dom/js"
 
 type Node interface {
 	EventTarget

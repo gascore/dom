@@ -1,8 +1,6 @@
-//+build wasm,js
-
 package dom
 
-import "github.com/dennwc/dom/js"
+import "github.com/gascore/dom/js"
 
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement
 
@@ -215,16 +213,6 @@ func (e *HTMLElement) Spellcheck() bool {
 // SetSpellcheck is a Boolean that controls spell-checking. It is present on all HTML elements, though it doesn't have an effect on all of them.
 func (e *HTMLElement) SetSpellcheck(v bool) {
 	e.v.Set("spellcheck", v)
-}
-
-// Style is a CSSStyleDeclaration, an object representing the declarations of an element's style attributes.
-func (e *HTMLElement) Style() *Style {
-	return AsStyle(e.v.Get("style"))
-}
-
-// SetStyle is a CSSStyleDeclaration, an object representing the declarations of an element's style attributes.
-func (e *HTMLElement) SetStyle(v *Style) {
-	e.v.Set("style", v.v)
 }
 
 // TabIndex is a long representing the position of the element in the tabbing order.

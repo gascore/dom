@@ -1,8 +1,6 @@
-//+build wasm
-
 package dom
 
-import "github.com/dennwc/dom/js"
+import "github.com/gascore/dom/js"
 
 // https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot
 

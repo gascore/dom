@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"net"
 
-	"github.com/dennwc/dom/js"
+	"github.com/gascore/dom/js"
 )
 
 // Peers represents a dynamic list of peers that were discovered via signalling.

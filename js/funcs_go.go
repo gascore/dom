@@ -1,8 +1,6 @@
-//+build wasm,go1.12
-
 package js
 
-import "syscall/js"
+import "github.com/gopherjs/gopherwasm/js"
 
 // Callback is a wrapped Go function to be called by JavaScript.
 //

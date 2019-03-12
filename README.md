@@ -1,5 +1,7 @@
 # Go DOM binding (and more) for WebAssembly
 
+# Forked from [dennwc/dom](https://github.com/dennwc/dom)
+
 This library provides a Go API for different Web APIs for WebAssembly target.
 
 It's in an active development, but an API will be carefully versioned to
@@ -28,14 +30,14 @@ More information about Go's WebAssembly support can be found on [Go's WebAssembl
 Pull the library and install `wasm-server` (optional):
 
 ```
-go get -u github.com/dennwc/dom
-go install github.com/dennwc/dom/cmd/wasm-server
+go get -u github.com/gascore/dom
+go install github.com/gascore/dom/cmd/wasm-server
 ```
 
 Run an example app:
 
 ```
-cd $GOPATH/src/github.com/dennwc/dom
+cd $GOPATH/src/github.com/gascore/dom
 wasm-server
 ```
 

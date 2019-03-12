@@ -1,8 +1,6 @@
-//+build wasm,!go1.12
-
 package js
 
-import "syscall/js"
+import "github.com/gopherjs/gopherwasm/js"
 
 func unwrap(v Wrapper) Ref {
 	return v.JSValue()

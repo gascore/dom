@@ -1,4 +1,4 @@
-//+build !js
+ 
 
 package jstest
 
@@ -10,7 +10,7 @@ import (
 	"os/exec"
 	"testing"
 
-	"github.com/dennwc/dom/internal/goenv"
+	"github.com/gascore/dom/internal/goenv"
 )
 
 const (

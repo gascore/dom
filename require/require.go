@@ -1,5 +1,3 @@
-//+build wasm,js
-
 package require
 
 import (
@@ -7,8 +5,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/dennwc/dom"
-	"github.com/dennwc/dom/js"
+	"github.com/gascore/dom"
+	"github.com/gascore/dom/js"
 )
 
 var required = make(map[string]error)

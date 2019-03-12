@@ -1,8 +1,6 @@
-//+build wasm
-
 package dom
 
-import "github.com/dennwc/dom/js"
+import "github.com/gascore/dom/js"
 
 func AsTokenList(v js.Value) *TokenList {
 	if !v.Valid() {
@@ -21,4 +19,8 @@ func (t *TokenList) Add(class ...interface{}) {
 
 func (t *TokenList) Remove(class ...interface{}) {
 	t.v.Call("remove", class...)
+}
+
+func (t *TokenList) Contains(class interface{}) bool {
+	return t.v.Call("contains", class).Bool()
 }

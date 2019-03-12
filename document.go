@@ -1,8 +1,8 @@
-//+build wasm,js
+ 
 
 package dom
 
-import "github.com/dennwc/dom/js"
+import "github.com/gascore/dom/js"
 
 func GetDocument() *Document {
 	doc := js.Get("document")
@@ -25,6 +25,10 @@ type Document struct {
 func (d *Document) CreateElement(tag string) *Element {
 	v := d.v.Call("createElement", tag)
 	return AsElement(v)
+}
+func (d *Document) CreateTextNode(value string) *TextNode {
+	v := d.v.Call("createTextNode", value)
+	return AsTextNode(v)
 }
 func (d *Document) CreateElementNS(ns string, tag string) *Element {
 	v := d.v.Call("createElementNS", ns, tag)

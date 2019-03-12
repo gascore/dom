@@ -1,4 +1,4 @@
-//+build !js
+ 
 
 package jstest
 
@@ -22,7 +22,7 @@ import (
 	"github.com/chromedp/cdproto/runtime"
 	"github.com/chromedp/chromedp"
 	"github.com/chromedp/chromedp/client"
-	"github.com/dennwc/dom/internal/goenv"
+	"github.com/gascore/dom/internal/goenv"
 	"github.com/dennwc/testproxy"
 	"github.com/ory/dockertest"
 	"github.com/ory/dockertest/docker"

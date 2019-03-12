@@ -1,9 +1,7 @@
-//+build wasm
-
 package storage
 
 import (
-	"syscall/js"
+	"github.com/gopherjs/gopherwasm/js"
 )
 
 func getStorage(name string) Storage {

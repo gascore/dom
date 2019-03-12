@@ -1,11 +1,9 @@
-//+build wasm,js
-
 package dom
 
 import (
 	"fmt"
 
-	"github.com/dennwc/dom/js"
+	"github.com/gascore/dom/js"
 )
 
 var _ Node = (*Element)(nil)
@@ -246,6 +244,10 @@ func (e *Element) GetBoundingClientRect() Rect {
 	return Rect{Min: Point{x, y}, Max: Point{x + w, y + h}}
 }
 
+func (e *Element) GetBoundingClientRectRaw() js.Value {
+	return e.v.Call("getBoundingClientRect")
+}
+
 func (e *Element) onMouseEvent(typ string, h MouseEventHandler) {
 	e.AddEventListener(typ, func(e Event) {
 		h(e.(*MouseEvent))
@@ -284,7 +286,26 @@ func (e *Element) AttachShadow(opts AttachShadowOpts) *ShadowRoot {
 	return AsShadowRoot(e.v.Call("attachShadow", js.ValueOf(m)))
 }
 
+func (e *Element) InsertBefore(a, b *Element) {
+	e.JSValue().Call("insertBefore", a.JSValue(), b.JSValue())
+}
+
+func (e *Element) Clone() *Element {
+	v := js.Value{Ref: e.JSValue().Call("cloneNode", true)}
+	return AsElement(v)
+}
+
 // InsertAdjacentElement inserts a given element node at a given position relative to the element it is invoked upon.
 func (e *Element) InsertAdjacentElement(position Position, newElement *Element) js.Value {
 	return e.v.Call("insertAdjacentElement", string(position), newElement.v)
+}
+
+// Style is a CSSStyleDeclaration, an object representing the declarations of an element's style attributes.
+func (e *Element) Style() *Style {
+	return AsStyle(e.v.Get("style"))
+}
+
+// SetStyle is a CSSStyleDeclaration, an object representing the declarations of an element's style attributes.
+func (e *Element) SetStyle(v *Style) {
+	e.v.Set("style", v.v)
 }

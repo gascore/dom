@@ -1,12 +1,10 @@
-//+build wasm
-
 package svg
 
 import (
 	"fmt"
 	"strings"
 
-	"github.com/dennwc/dom"
+	"github.com/gascore/dom"
 )
 
 // NewElement creates a new SVG element.

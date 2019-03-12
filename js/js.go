@@ -1,10 +1,8 @@
-//+build wasm
-
 package js
 
 import (
+	"github.com/gopherjs/gopherwasm/js"
 	"sync"
-	"syscall/js"
 )
 
 var (
@@ -133,8 +131,6 @@ func toJS(o interface{}) interface{} {
 	return o
 }
 
-var _ Wrapper = Value{}
-
 // Value is a convenience wrapper for syscall/js.Value.
 // It provides some additional functionality, while storing no additional state.
 // Its safe to instantiate Value directly, by wrapping syscall/js.Value.
@@ -238,7 +234,7 @@ func (v Value) New(args ...interface{}) Value {
 }
 
 // InstanceOf reports whether v is an instance of type t according to JavaScript's instanceof operator.
-func (v Value) InstanceOf(class Wrapper) bool {
+func (v Value) InstanceOf(class Value) bool {
 	return v.Ref.InstanceOf(class.JSValue())
 }
 

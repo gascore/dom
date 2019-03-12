@@ -1,5 +1,3 @@
-//+build !js
-
 // Package ws provides a functionality similar to Go net package on top of WebSockets.
 package ws
 

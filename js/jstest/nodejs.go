@@ -1,4 +1,4 @@
-//+build !js
+ 
 
 package jstest
 
@@ -15,7 +15,7 @@ import (
 	"github.com/ory/dockertest"
 	"github.com/ory/dockertest/docker"
 
-	"github.com/dennwc/dom/internal/goenv"
+	"github.com/gascore/dom/internal/goenv"
 	"github.com/stretchr/testify/require"
 )
 
