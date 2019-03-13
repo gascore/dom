@@ -286,15 +286,6 @@ func (e *Element) AttachShadow(opts AttachShadowOpts) *ShadowRoot {
 	return AsShadowRoot(e.v.Call("attachShadow", js.ValueOf(m)))
 }
 
-func (e *Element) InsertBefore(a, b *Element) {
-	e.JSValue().Call("insertBefore", a.JSValue(), b.JSValue())
-}
-
-func (e *Element) Clone() *Element {
-	v := js.Value{Ref: e.JSValue().Call("cloneNode", true)}
-	return AsElement(v)
-}
-
 // InsertAdjacentElement inserts a given element node at a given position relative to the element it is invoked upon.
 func (e *Element) InsertAdjacentElement(position Position, newElement *Element) js.Value {
 	return e.v.Call("insertAdjacentElement", string(position), newElement.v)

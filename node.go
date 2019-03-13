@@ -110,3 +110,20 @@ func (e *NodeBase) RemoveChild(n Node) Node {
 func (e *NodeBase) ReplaceChild(n, old Node) Node {
 	return AsElement(e.v.Call("replaceChild", n, old))
 }
+
+func (e *NodeBase) InsertBefore(a, b Node) {
+	e.JSValue().Call("insertBefore", a.JSValue(), b.JSValue())
+}
+
+func (e *NodeBase) Clone() Node {
+	v := js.Value{Ref: e.JSValue().Call("cloneNode", true)}
+	return AsElement(v)
+}
+
+func (e *NodeBase) Value() string {
+	return e.JSValue().Get("value").String()
+}
+
+func (e *NodeBase) SetValue(a interface{}) {
+	e.JSValue().Set("value", a)
+}

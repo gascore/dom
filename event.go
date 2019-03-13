@@ -1,5 +1,3 @@
- 
-
 package dom
 
 import (
@@ -26,6 +24,9 @@ type Event interface {
 	Type() string
 	IsTrusted() bool
 	Path() NodeList
+	Key() string
+	KeyCode() string
+	ButtonAttr() string
 
 	PreventDefault()
 	StopPropagation()
@@ -119,6 +120,18 @@ func (e *BaseEvent) Path() NodeList {
 	return AsNodeList(e.v.Get("path"))
 }
 
+func (e *BaseEvent) Key() string {
+	return e.v.Get("key").String()
+}
+
+func (e *BaseEvent) KeyCode() string {
+	return e.v.Get("keyCode").String()
+}
+
+func (e *BaseEvent) ButtonAttr() string {
+	return e.v.Get("button").String()
+}
+
 func (e *BaseEvent) PreventDefault() {
 	e.v.Call("preventDefault")
 }
@@ -185,4 +198,16 @@ func (e *MouseEvent) ShiftKey() bool {
 
 func (e *MouseEvent) MetaKey() bool {
 	return e.v.Get("metaKey").Bool()
+}
+
+func (e *MouseEvent) Key() string {
+	return e.v.Get("key").String()
+}
+
+func (e *MouseEvent) KeyCode() string {
+	return e.v.Get("keyCode").String()
+}
+
+func (e *MouseEvent) ButtonAttr() string {
+	return e.v.Get("button").String()
 }
