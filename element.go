@@ -83,6 +83,14 @@ func (e *Element) ClientWidth() int {
 	return e.v.Get("clientWidth").Int()
 }
 
+func (e *Element) OffsetWidth() int {
+	return e.v.Get("offsetWidth").Int()
+}
+
+func (e *Element) OffsetHeight() int {
+	return e.v.Get("offsetHeight").Int()
+}
+
 // ComputedName returns a DOMString containing the label exposed to accessibility.
 func (e *Element) ComputedName() string {
 	return e.v.Get("computedName").String()

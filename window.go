@@ -47,6 +47,10 @@ func (w *Window) LocalStorage() sjs.Value {
 	return w.JSValue().Get("localStorage")
 }
 
+func (w *Window) RequestAnimationFrame(h func(timeStep js.Value)) {
+	w.v.Call("requestAnimationFrame", js.NewEventCallback(h))
+}
+
 func joinKeyValuePairs(kvpair map[string]string, joiner string) string {
 	if kvpair == nil {
 		return ""
