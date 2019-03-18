@@ -44,12 +44,24 @@ func (e *NodeBase) Remove() {
 	e.funcs = nil
 }
 
-func (e *NodeBase) AddEventListener(typ string, h EventHandler) {
+func (e *NodeBase) AddCustomEventListener(typ string, h EventHandler, values js.Value) {
 	cb := js.NewEventCallback(func(v js.Value) {
 		h(convertEvent(v))
 	})
 	e.funcs = append(e.funcs, cb)
-	e.v.Call("addEventListener", typ, cb)
+	e.v.Call("addEventListener", typ, cb, values)
+}
+
+func (e *NodeBase) AddEventListener(typ string, h EventHandler) {
+	e.AddCustomEventListener(typ, h, js.NewObject())
+}
+
+func (e *NodeBase) AddPassiveEventListener(typ string, h EventHandler) {
+	obj := js.NewObject()
+	obj.Set("passive", true)
+	obj.Set("capture", false)
+
+	e.AddCustomEventListener(typ, h, obj)
 }
 
 func (e *NodeBase) AddErrorListener(h func(err error)) {
