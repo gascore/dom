@@ -14,6 +14,7 @@ require (
 	github.com/docker/go-connections v0.4.0 // indirect
 	github.com/docker/go-units v0.3.3 // indirect
 	github.com/google/go-cmp v0.2.0 // indirect
+	github.com/gopherjs/gopherwasm v1.1.0
 	github.com/gorilla/websocket v1.4.0
 	github.com/gotestyourself/gotestyourself v2.2.0+incompatible // indirect
 	github.com/lib/pq v1.0.0 // indirect
