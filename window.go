@@ -31,6 +31,16 @@ func (w *Window) AddEventListener(typ string, h EventHandler) {
 	}))
 }
 
+func (w *Window) RemoveEventListener(typ string, h EventHandler) {
+	w.v.Call("removeEventListener", typ, js.NewEventCallback(func(v js.Value) {
+		h(convertEvent(v))
+	}))
+}
+
+func (w *Window) DispatchEvent(value js.Value) {
+	w.JSValue().Call("dispatchEvent", value.JSValue())
+}
+
 func (w *Window) Open(url, windowName string, windowFeatures map[string]string) {
 	w.v.Call("open", url, windowName, joinKeyValuePairs(windowFeatures, ","))
 }
@@ -49,6 +59,22 @@ func (w *Window) LocalStorage() sjs.Value {
 
 func (w *Window) RequestAnimationFrame(h func(timeStep js.Value)) {
 	w.v.Call("requestAnimationFrame", js.NewEventCallback(h))
+}
+
+func (w *Window) GetHistory() sjs.Value {
+	return w.JSValue().Get("history")
+}
+
+func (w *Window) GetLocation() sjs.Value {
+	return w.JSValue().Get("location")
+}
+
+func (w *Window) GetLocationHash() string {
+	return w.GetLocation().Get("hash").String()
+}
+
+func (w *Window) GetLocationPath() string {
+	return w.GetLocation().Get("pathname").String()
 }
 
 func joinKeyValuePairs(kvpair map[string]string, joiner string) string {
