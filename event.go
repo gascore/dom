@@ -62,7 +62,7 @@ var (
 	eventClasses []eventClass
 )
 
-func convertEvent(v js.Value) Event {
+func ConvertEvent(v js.Value) Event {
 	e := BaseEvent{v: v}
 	// TODO: get class name directly
 	for _, cl := range eventClasses {

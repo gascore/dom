@@ -27,14 +27,34 @@ func (w *Window) JSValue() js.Ref {
 
 func (w *Window) AddEventListener(typ string, h EventHandler) {
 	w.v.Call("addEventListener", typ, js.NewEventCallback(func(v js.Value) {
-		h(convertEvent(v))
+		h(ConvertEvent(v))
 	}))
+}
+
+func (w *Window) AddPassiveEventListener(typ string, h EventHandler) {
+	obj := js.NewObject()
+	obj.Set("passive", true)
+	obj.Set("capture", false)
+
+	w.v.Call("addEventListener", typ, js.NewEventCallback(func(v js.Value) {
+		h(ConvertEvent(v))
+	}), obj)
 }
 
 func (w *Window) RemoveEventListener(typ string, h EventHandler) {
 	w.v.Call("removeEventListener", typ, js.NewEventCallback(func(v js.Value) {
-		h(convertEvent(v))
+		h(ConvertEvent(v))
 	}))
+}
+
+func (w *Window) RemovePassiveEventListener(typ string, h EventHandler) {
+	obj := js.NewObject()
+	obj.Set("passive", true)
+	obj.Set("capture", false)
+
+	w.v.Call("removeEventListener", typ, js.NewEventCallback(func(v js.Value) {
+		h(ConvertEvent(v))
+	}), obj)
 }
 
 func (w *Window) DispatchEvent(value js.Value) {
