@@ -233,6 +233,11 @@ func (e *Element) SetUndoScope(v bool) {
 
 // Methods
 
+func (e *Element) Clone() *Element {
+	v := js.Value{Ref: e.JSValue().Call("cloneNode", true)}
+	return AsElement(v)
+}
+
 func (e *Element) SetAttribute(k string, v interface{}) {
 	e.v.Call("setAttribute", k, fmt.Sprint(v))
 }

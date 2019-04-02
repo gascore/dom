@@ -146,6 +146,10 @@ func (e *NodeBase) InsertBefore(a, b Node) {
 	e.JSValue().Call("insertBefore", a.JSValue(), b.JSValue())
 }
 
+func (e *NodeBase) InsertAfter(a, b Node) {
+	e.JSValue().Call("insertBefore", a.JSValue(), b.JSValue().Get("nextSibling"))
+}
+
 func (e *NodeBase) Clone() Node {
 	v := js.Value{Ref: e.JSValue().Call("cloneNode", true)}
 	return AsElement(v)
