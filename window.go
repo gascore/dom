@@ -4,7 +4,7 @@ import (
 	"strings"
 
 	"github.com/gascore/dom/js"
-	sjs "github.com/gopherjs/gopherwasm/js"
+	sjs "syscall/js"
 )
 
 func GetWindow() *Window {

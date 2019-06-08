@@ -2,7 +2,7 @@ package js
 
 import (
 	"fmt"
-	"github.com/gopherjs/gopherwasm/js"
+	"syscall/js"
 )
 
 var _ Wrapper = TypedArray{}

@@ -1,6 +1,6 @@
 package js
 
-import "github.com/gopherjs/gopherwasm/js"
+import "syscall/js"
 
 func unwrap(v Wrapper) Ref {
 	return v.JSValue()

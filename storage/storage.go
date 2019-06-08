@@ -1,7 +1,7 @@
 package storage
 
 import (
-	"github.com/gopherjs/gopherwasm/js"
+	"syscall/js"
 )
 
 func getStorage(name string) Storage {

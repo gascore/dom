@@ -1,7 +1,7 @@
 package js
 
 import (
-	"github.com/gopherjs/gopherwasm/js"
+	"syscall/js"
 	"sync"
 )
 
