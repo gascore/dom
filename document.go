@@ -1,5 +1,3 @@
- 
-
 package dom
 
 import "github.com/gascore/dom/js"
