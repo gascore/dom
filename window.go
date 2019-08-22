@@ -32,7 +32,7 @@ func (w *Window) AddEventListener(typ string, h EventHandler) {
 }
 
 func GetComputedStyle(el *Element) js.Value {
-	return GetWindow().v.Call("getComputedStyle")
+	return GetWindow().v.Call("getComputedStyle", el)
 }
 
 func (w *Window) AddPassiveEventListener(typ string, h EventHandler) {
