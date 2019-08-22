@@ -14,6 +14,10 @@ func NewElement(tag string) *Element {
 	return Doc.CreateElement(tag)
 }
 
+func NewElementNS(ns, tag string) *Element {
+	return Doc.CreateElementNS(ns, tag)
+}
+
 var _ Node = (*Document)(nil)
 
 type Document struct {

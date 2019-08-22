@@ -31,6 +31,10 @@ func (w *Window) AddEventListener(typ string, h EventHandler) {
 	}))
 }
 
+func GetComputedStyle(el *Element) js.Value {
+	return GetWindow().v.Call("getComputedStyle")
+}
+
 func (w *Window) AddPassiveEventListener(typ string, h EventHandler) {
 	obj := js.NewObject()
 	obj.Set("passive", true)
